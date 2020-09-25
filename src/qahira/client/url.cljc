@@ -2,6 +2,10 @@
   (:require
    [taoensso.encore :as e]))
 
+(defn anon-meta
+  []
+  "/api/meta")
+
 (defn anon-user
   []
   "/api/user")

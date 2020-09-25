@@ -5,6 +5,9 @@
    [qahira.client.url :as qhr.c.url]
    [taoensso.encore :as e]))
 
+(defprotocol QahiraClient
+  (request-condition [qahira-client]))
+
 (defprotocol UserClient
   (register-user [user-client new-user])
   (login-user [user-client username password])
@@ -110,3 +113,9 @@
           (read-auth-token [app-client auth-token]
             (let [token-encoder (:auth-token-encoder app-client)]
               (qhr.c.edge.token-enc/read-token token-encoder auth-token :auth)))))
+
+(extend-protocol QahiraClient
+  orchid.components.http_client.HttpClient
+  (request-condition [qahira-client]
+    (let [uri (qhr.c.url/anon-meta)]
+      (run-request qahira-client :get uri {}))))

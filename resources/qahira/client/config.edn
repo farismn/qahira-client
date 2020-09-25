@@ -1,0 +1,29 @@
+{:qahira/http-server          {:port #profile {:default 8080
+                                               :test    9090}}
+ :qahira/database             {:lifecycle     #profile {:dev  :durable
+                                                        :test :ephemeral}
+                               :adapter       "postgresql"
+                               :username      #profile {:dev  "faris"
+                                                        :test "faris"}
+                               :password      #profile {:dev  "bluemotorinagarage"
+                                                        :test "bluemotorinagarage"}
+                               :database-name #profile {:default "qahira"
+                                                        :test    "qahira_test"}}
+ :qahira/database-migration   {:store         :database
+                               :migration-dir "qahira/pg/migrations"}
+ :qahira/auth-token-encoder   {:alg    #profile {:dev  :hs512
+                                                 :test :hs512}
+                               :secret #profile {:dev  "foobar"
+                                                 :test "foobar"}}
+ :qahira/api-token-encoder    {:alg    #profile {:dev  :hs512
+                                                 :test :hs512}
+                               :secret #profile {:dev  "barfoo"
+                                                 :test "barfoo"}}
+ :qahira/logger               {:set-root-config? #profile {:default true}
+                               :level            #profile {:dev  :debug
+                                                           :test :debug}}
+ :qahira/logger-println       {:enabled? #profile {:default true
+                                                   :test    false}}
+ :qahira.client/qahira-client {:host-uri     #join ["http://localhost:"
+                                                    #ref [:qahira/http-server :port]]
+                               :content-type #profile {:default :json}}}
