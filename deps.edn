@@ -1,7 +1,7 @@
 {:paths   ["src"]
  :deps    {org.clojure/clojure        {:mvn/version "1.10.2-alpha1"}
            farismn/orchid             {:git/url "https://github.com/farismn/orchid"
-                                       :sha     "627d52d5ab4f1ec5674d2168493b108b06f58b52"}
+                                       :sha     "ec6b93334b6dde533f78ccfd024cedb742afc0f0"}
            com.stuartsierra/component {:mvn/version "1.0.0"}
            clj-http/clj-http          {:mvn/version "3.10.3"}
            cljs-http/cljs-http        {:mvn/version "0.1.46"}
@@ -13,5 +13,5 @@
  :aliases {:dev {:extra-paths ["resources" "dev"]
                  :extra-deps  {com.stuartsierra/component.repl {:mvn/version "0.2.0"}
                                farismn/qahira                  {:git/url "https://github.com/farismn/qahira"
-                                                                :sha     "1aae3553dd564088e251fa653e104d1192e363d8"}
+                                                                :sha     "b5d34eee79c37f2bf81d828ebb5ba135e8ea28a8"}
                                aero/aero                       {:mvn/version "1.1.6"}}}}}
